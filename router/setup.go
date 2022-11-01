@@ -10,4 +10,10 @@ func SetupRoutes(app *fiber.App) {
 
 	api.Post("/register-user", controllers.RegisterUser)
 	api.Post("/register-doctor", controllers.RegisterDoctor)
+	// api.Get("/users", controllers.ListUsers)
+	// api.Get("/users/:id", controllers.GetUser)
+	// api.Put("/users/:id", controllers.EditUser)
+	// api.Get("/doctors", controllers.ListUsers)
+	// api.Get("/doctors/:id", controllers.GetDoctor)
+	api.Put("/doctors/:id", controllers.EditDoctor)
 }

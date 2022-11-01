@@ -64,6 +64,14 @@ func RegisterDoctor(c *fiber.Ctx) error {
 	return c.JSON(doctor)
 }
 
+func EditDoctor(c *fiber.Ctx) error {
+
+	// database.DB.First(c.Params("id"));
+
+	return c.SendString(c.Params("id"))
+
+}
+
 func Hello(c *fiber.Ctx) error {
 	return c.SendString("SUP mate")
 }
