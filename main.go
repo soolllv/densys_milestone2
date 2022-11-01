@@ -5,6 +5,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/soolllv/densys_milestone2/database"
+	"github.com/soolllv/densys_milestone2/router"
 )
 
 func CreateServer() *fiber.App {
@@ -16,15 +18,13 @@ func CreateServer() *fiber.App {
 func main() {
 
 	// connect to PSQL
-	// database.ConnectToDB()
+	database.ConnectToDB()
 
 	app := CreateServer()
 
 	app.Use(cors.New())
 
-	app.Get("/hello", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
+	router.SetupRoutes(app)
 
 	//404 handler
 	app.Use(func(c *fiber.Ctx) error {
