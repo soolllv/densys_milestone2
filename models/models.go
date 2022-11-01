@@ -16,12 +16,14 @@ type Base struct {
 	UUID          uuid.UUID `json:"_id" gorm:"primaryKey;autoIncrement:false"`
 	CreatedAt     string    `json:"created_at"`
 	UpdatedAt     string    `json:"updated_at"`
+	Name          string
+	Surname       string
+	MiddleName    string
 	DataOfBirth   *time.Time
 	IIN_Number    uint
 	ID_Number     uint
 	ContactNumber uint64
 	Address       string
-	RegDate       time.Time
 }
 
 // BeforeCreate will set Base struct before every insert

@@ -1,6 +1,10 @@
 package controllers
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+	"github.com/soolllv/densys_milestone2/models"
+	// "github.com/soolllv/densys_milestone2/database"
+)
 
 func Register(c *fiber.Ctx) error {
 	var data map[string]string
@@ -9,5 +13,26 @@ func Register(c *fiber.Ctx) error {
 		return err
 	}
 
-	return c.JSON(data)
+	user := models.User{
+		Name:              data["name"],
+		Surname:           data["surname"],
+		MiddleName:        data["middleName"],
+		DataOfBirth:       data["dateOfBirth"],
+		IIN_Number:        data["iinNum"],
+		ID_Number:         data["idNum"],
+		ContactNumber:     data["contactNum"],
+		Address:           data["address"],
+		Email:             data["email"],
+		BloodGroup:        data["bloodGroup"],
+		EmerContactNumber: data["emerContactNum"],
+		MaritalStatus:     data["maritalSts"],
+	}
+
+	// database.DB.Create(&user)
+
+	return c.JSON(user)
+}
+
+func Hello(c *fiber.Ctx) error {
+	return c.SendString("SUP mate")
 }

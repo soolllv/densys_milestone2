@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/soolllv/densys_milestone2/models"
+
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -30,6 +32,8 @@ func ConnectToDB() {
 		log.Fatal("Failed to connect to database \n", err)
 		os.Exit(2)
 	}
+
+	DB.AutoMigrate(&models.User{})
 
 	log.Println("connected")
 }
