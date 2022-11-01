@@ -72,6 +72,15 @@ func EditDoctor(c *fiber.Ctx) error {
 
 }
 
+func GetDoctor(c *fiber.Ctx) error {
+
+	// var curDoc map[string]string
+	result := database.DB.First(c.Params("id"))
+
+	return c.JSON(result)
+
+}
+
 func Hello(c *fiber.Ctx) error {
 	return c.SendString("SUP mate")
 }

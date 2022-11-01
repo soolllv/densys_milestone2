@@ -14,6 +14,6 @@ func SetupRoutes(app *fiber.App) {
 	// api.Get("/users/:id", controllers.GetUser)
 	// api.Put("/users/:id", controllers.EditUser)
 	// api.Get("/doctors", controllers.ListUsers)
-	// api.Get("/doctors/:id", controllers.GetDoctor)
+	api.Get("/doctors/:id", controllers.GetDoctor)
 	api.Put("/doctors/:id", controllers.EditDoctor)
 }
