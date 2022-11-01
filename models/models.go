@@ -12,18 +12,10 @@ func GenerateISOString() string {
 }
 
 type Base struct {
-	ID            uint       `gorm:"primaryKey"`
-	UUID          uuid.UUID  `json:"_id" gorm:"primaryKey;autoIncrement:false"`
-	CreatedAt     string     `json:"created_at"`
-	UpdatedAt     string     `json:"updated_at"`
-	Name          string     `json:"name"`
-	Surname       string     `json:"surname"`
-	MiddleName    string     `json:"middleName"`
-	DataOfBirth   *time.Time `json:"dateOfBirth"`
-	IIN_Number    uint       `json:"iinNum"`
-	ID_Number     uint       `json:"idNum"`
-	ContactNumber uint64     `json:"contactNum"`
-	Address       string     `json:"address"`
+	ID        uint      `gorm:"primaryKey"`
+	UUID      uuid.UUID `json:"_id" gorm:"primaryKey;autoIncrement:false"`
+	CreatedAt string    `json:"created_at"`
+	UpdatedAt string    `json:"updated_at"`
 }
 
 // BeforeCreate will set Base struct before every insert
