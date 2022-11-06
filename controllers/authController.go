@@ -43,22 +43,23 @@ func RegisterDoctor(c *fiber.Ctx) error {
 	}
 
 	doctor := models.Doctor{
-		Name:          data["name"],
-		Surname:       data["surname"],
-		MiddleName:    data["middleName"],
-		DataOfBirth:   data["dateOfBirth"],
-		IIN_Number:    data["iinNum"],
-		ID_Number:     data["idNum"],
-		ContactNumber: data["contactNum"],
-		Address:       data["address"],
-		DepartmentID:  data["departmentId"],
-		SpecDetailsID: data["specDetailsID"],
-		Experience:    data["experience"],
-		Photo:         data["photo"],
-		Category:      data["category"],
-		PriceOfApp:    data["priceOfApp"],
-		Degree:        data["degree"],
-		Rating:        data["rating"],
+		Name:           data["name"],
+		Surname:        data["surname"],
+		MiddleName:     data["middleName"],
+		DataOfBirth:    data["dateOfBirth"],
+		IIN_Number:     data["iinNum"],
+		ID_Number:      data["idNum"],
+		ContactNumber:  data["contactNum"],
+		Address:        data["address"],
+		Department:     data["department"],
+		Specialization: data["specialization"],
+		Experience:     data["experience"],
+		Photo:          data["photo"],
+		Category:       data["category"],
+		Price:          data["price"],
+		Schedule:       data["schedule"],
+		Degree:         data["degree"],
+		Rating:         data["rating"],
 	}
 
 	database.DB.Create(&doctor)
@@ -89,12 +90,13 @@ func EditDoctor(c *fiber.Ctx) error {
 	curDoc.ID_Number = data["idNum"]
 	curDoc.ContactNumber = data["contactNum"]
 	curDoc.Address = data["address"]
-	curDoc.DepartmentID = data["departmentId"]
-	curDoc.SpecDetailsID = data["specDetailsID"]
+	curDoc.Department = data["department"]
+	curDoc.Specialization = data["specDetails"]
 	curDoc.Experience = data["experience"]
 	curDoc.Photo = data["photo"]
 	curDoc.Category = data["category"]
-	curDoc.PriceOfApp = data["priceOfApp"]
+	curDoc.Price = data["price"]
+	curDoc.Schedule = data["schedule"]
 	curDoc.Degree = data["degree"]
 	curDoc.Rating = data["rating"]
 

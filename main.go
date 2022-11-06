@@ -23,7 +23,7 @@ func main() {
 	app := CreateServer()
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:8000",
+		AllowOrigins: "http://localhost:3000",
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
