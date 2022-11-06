@@ -91,7 +91,7 @@ func EditDoctor(c *fiber.Ctx) error {
 	curDoc.ContactNumber = data["contactNum"]
 	curDoc.Address = data["address"]
 	curDoc.Department = data["department"]
-	curDoc.Specialization = data["specDetails"]
+	curDoc.Specialization = data["specialization"]
 	curDoc.Experience = data["experience"]
 	curDoc.Photo = data["photo"]
 	curDoc.Category = data["category"]
@@ -179,13 +179,13 @@ func ListUsers(c *fiber.Ctx) error {
 	return c.JSON(users)
 }
 
-func deleteDoctor(c *fiber.Ctx) error {
+func DeleteDoctor(c *fiber.Ctx) error {
 	var Doc models.Doctor
 	database.DB.Delete(&Doc, c.Params("id"))
 	return nil
 }
 
-func deleteUser(c *fiber.Ctx) error {
+func DeleteUser(c *fiber.Ctx) error {
 	var User models.User
 	database.DB.Delete(&User, c.Params("id"))
 	return nil

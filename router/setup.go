@@ -12,10 +12,10 @@ func SetupRoutes(app *fiber.App) {
 	api.Post("/register-doctor", controllers.RegisterDoctor)
 	api.Get("/users", controllers.ListUsers)
 	api.Get("/users/:id", controllers.GetUser)
-	api.Delete("/users/:id", controllers.deleteUser)
+	api.Delete("/users/:id", controllers.DeleteUser)
 	api.Put("/users/:id", controllers.EditUser)
 	api.Get("/doctors", controllers.ListDoctors)
 	api.Get("/doctors/:id", controllers.GetDoctor)
-	api.Delete("/doctors/:id", controllers.deleteDoctor)
+	api.Delete("/doctors/:id", controllers.DeleteDoctor)
 	api.Put("/doctors/:id", controllers.EditDoctor)
 }
