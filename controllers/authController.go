@@ -179,6 +179,18 @@ func ListUsers(c *fiber.Ctx) error {
 	return c.JSON(users)
 }
 
+func deleteDoctor(c *fiber.Ctx) error {
+	var Doc models.Doctor
+	database.DB.Delete(&Doc, c.Params("id"))
+	return nil
+}
+
+func deleteUser(c *fiber.Ctx) error {
+	var User models.User
+	database.DB.Delete(&User, c.Params("id"))
+	return nil
+}
+
 func Hello(c *fiber.Ctx) error {
 	return c.SendString("SUP mate")
 }
