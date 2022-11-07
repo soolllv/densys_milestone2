@@ -18,4 +18,8 @@ func SetupRoutes(app *fiber.App) {
 	api.Get("/doctors/:id", controllers.GetDoctor)
 	api.Delete("/doctors/:id", controllers.DeleteDoctor)
 	api.Put("/doctors/:id", controllers.EditDoctor)
+	app.Post("/log-admin", controllers.LogAdmin)
+	app.Post("/reg-admin", controllers.RegAdmin)
+	app.Get("/admin-page", controllers.AdminPage)
+	app.Post("/logout-admin", controllers.AdminLogout)
 }

@@ -1,6 +1,6 @@
 import {useState, useEffect, createContext, useContext} from "react";
 import {NotificationManager} from "react-notifications"
-import { BackendApi} from "../client/backend-api/admin"
+import { UserApi } from "../client/backend-api/admin"
 
 const UserContext = createContext({
     user : null,
@@ -9,32 +9,41 @@ const UserContext = createContext({
 
 const useUser = () => useContext(UserContext)
 
-const UserProvider = ({ children }) => {
+const UserProvider = ( {children} ) => {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        BackendApi.getProfile().then(({user, error}) => {
+        UserApi.getProfile().then((user, error) => {
             if (error) {
                 console.error(error)
             } else {
+                console.log(user);
                 setUser(user)
             }
         }).catch(console.error)
     }, [])
 
     const loginUser = async (username, password) => {
-        const {user, error} = await BackendApi.loginUser(username, password)
-        if (error) {
-            NotificationManager.error(error)
-        } else {
+        // const {user, error} = 
+        await UserApi.login(username, password).then(r =>{
             NotificationManager.success("Logged in successfully!")
-            setUser(user)
-        }
+            setUser(r.data)
+        }).catch(error =>{
+            NotificationManager.error(error)
+        })
+            
+        // if (error) {
+        //     NotificationManager.error(error)
+        // } else {
+        //     NotificationManager.success("Logged in successfully!")
+        //     console.log(user);
+        //     setUser(user)
+        // }
     }
 
     const logoutUser = async () => {
         setUser(null)
-        await BackendApi.logout()
+        await UserApi.logout()
     }
 
     return (
